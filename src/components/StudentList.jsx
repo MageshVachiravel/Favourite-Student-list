@@ -7,7 +7,10 @@ function StudentList(props){
     const favList = props.favList
     const setFavList = props.setFavList
 
-    const handleFav = (favId)=>{
+    const handleFav = (favId,event)=>{
+        event.currentTarget.disabled = true;
+        event.target.classList.replace("bg-black","bg-[#808080]")
+        event.target.textContent = "added to favourite List"
         const fav = listArr.filter((item)=>{
             if(item.id === favId){
                 return true
@@ -30,7 +33,7 @@ function StudentList(props){
             <div>
                 <ul className="mt-5 text-lg">
                     {listArr.map((item)=>{
-                        return <li className="ml-5 my-5" key={item.id}>{item.id}. {item.name} <button className="bg-black text-white rounded px-2 ml-5" onClick={()=> handleFav(item.id)}>add to Favourite</button></li>
+                        return <li className="ml-5 my-5" key={item.id}>{item.id}. {item.name} <button className="bg-black text-white rounded px-2 ml-5" onClick={(event)=> handleFav(item.id,event)}>add to Favourite</button></li>
                     })}                    
                 </ul>
             </div>

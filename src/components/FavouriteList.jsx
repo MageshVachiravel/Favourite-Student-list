@@ -9,7 +9,7 @@ function FavouriteList(props){
     const setFavList = props.setFavList
 
 
-    function handleDelete(deleteId,event){
+    function handleDelete(deleteId){
 
         const tempArr = favList.filter((item)=>{
             if(deleteId === item.id){
@@ -21,8 +21,6 @@ function FavouriteList(props){
         })
 
         setFavList(tempArr)
-
-        console.log(event.target)
     }
 
     return(
@@ -35,7 +33,7 @@ function FavouriteList(props){
             <div>
                 <ul className="mt-5 text-lg">
                 {favList.map((item,index)=>{
-                        return <li className="ml-5 my-5" key={index}> {item.id}. {item.name} <button className="bg-red-600 text-white rounded px-6 ml-5" onClick={(event)=>handleDelete(item.id,event)}>Remove</button></li>
+                        return <li className="ml-5 my-5" key={index}> {index+1}. {item.name} <button className="bg-red-600 text-white rounded px-6 ml-5" onClick={()=>handleDelete(item.id)}>Remove</button></li>
                     })} 
                 </ul>
             </div>
